@@ -1,17 +1,36 @@
 import kagglehub
 import os
 import pandas as pd
+import numpy as np
 
 path = kagglehub.dataset_download( "shohinurpervezshohan/freelancer-earnings-and-job-trends" )
 csv_files = [f for f in os.listdir(path) if f.endswith(".csv")]
 
-print("CSV files found:", csv_files)
-
 df = pd.read_csv(os.path.join(path, csv_files[0]))
 
-# Dividing dataset into dependent and independent variables
+# print(df.columns.tolist())
 
-X = df.drop(["Freelancer_ID", "Earning_USD"], axis=1)
+### DIVING DATASET INTO DEPENDENT AND INDEPENDENT VARIABLE
+
+X = df.drop(["Freelancer_ID", "Earnings_USD"], axis=1)
 # removing column
-y = df["Earning_USD"]
+y = df["Earnings_USD"]
+
+# print(X.columns.tolist())
+
+### ENCODING INDEPENDENT VARIABLE
+
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import OneHotEncoder
+
+ct = ColumnTransformer( transformers = [('encoder', OneHotEncoder(), [0, 1, 2, 3, 4, 10])], remainder = 'passthrough')
+X = np.array( ct.fit_transform(X))
+
+# print(X)
+
+
+
+
+
+
 
