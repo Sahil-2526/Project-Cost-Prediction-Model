@@ -28,6 +28,13 @@ X = np.array( ct.fit_transform(X))
 
 # print(X)
 
+## SPLITTING DATASET INTO TRAINING SET AND TEST SET
+
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split( X, y, test_size = 0.2, random_state = 1 )
+
+# print(y_test)
+
 
 
 
