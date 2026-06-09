@@ -47,11 +47,3 @@ X_train[:, 29:] = sc.fit_transform( X_train[:, 29:] )
 X_test[:, 29:] = sc.transform( X_test[:, 29:] )
 
 # print( X_train)
-
-
-
-
-
-
-
-
