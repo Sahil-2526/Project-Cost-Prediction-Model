@@ -8,7 +8,8 @@ from sklearn.preprocessing import OneHotEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
-def data_preprocessing():
+def data_preprocessor():
+
     # Importing data
     path = kagglehub.dataset_download( "shohinurpervezshohan/freelancer-earnings-and-job-trends" )
     csv_files = [f for f in os.listdir(path) if f.endswith(".csv")]
